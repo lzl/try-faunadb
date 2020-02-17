@@ -25,5 +25,16 @@
     "prettier": "^1.19.1",
     "tailwindcss": "^1.2.0",
     "typescript": "^3.7.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx,json,md}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
