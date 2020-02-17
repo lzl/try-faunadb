@@ -12,7 +12,7 @@ Create index
 const result = await client.query(
   q.CreateIndex({
     name: 'accounts_by_email',
-    permissions: { read: 'public' },
+    // permissions: { read: 'public' },
     source: q.Collection('accounts'),
     terms: [{ field: ['data', 'email'] }],
     unique: true,
@@ -194,6 +194,23 @@ const result = await client.query(
               )
             )
           ),
+        },
+      },
+    ],
+  })
+)
+```
+
+```js
+const result = await client.query(
+  q.CreateRole({
+    name: 'can_read_self_account',
+    membership: [{ resource: q.Collection('accounts') }],
+    privileges: [
+      {
+        resource: q.Collection('accounts'),
+        actions: {
+          read: q.Query(q.Lambda('ref', q.Equals(q.Var('ref'), q.Identity()))),
         },
       },
     ],

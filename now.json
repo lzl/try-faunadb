@@ -1,5 +1,6 @@
 {
   "env": {
-    "FAUNADB_SECRET_KEY": "@try-faunadb-secret-key"
+    "FAUNADB_SECRET_KEY": "@try-faunadb-secret-key",
+    "GOOGLE_OAUTH_CLIENT_SECRET": "@avl-full-stack-exam-google-oauth-client-secret"
   }
 }

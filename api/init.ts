@@ -23,7 +23,7 @@ export default async (req: NowRequest, res: NowResponse) => {
     const q = faunadb.query
     const client = new faunadb.Client({ secret })
 
-    const data = JSON.parse(req.body)
+    // const data = JSON.parse(req.body)
 
     // res.status(200).json(result)
     res.status(200).json({ ok: true })
