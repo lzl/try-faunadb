@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import faunadb from 'faunadb'
 
+declare const Paddle
+
 export default function Me({ secret }) {
   useEffect(() => {
     if (!secret) return
@@ -16,9 +18,23 @@ export default function Me({ secret }) {
     })()
   }, [])
 
+  useEffect(() => {
+    Paddle.Setup({ vendor: 108756 })
+  }, [])
+
+  function checkout() {
+    Paddle.Checkout.open({
+      product: 584338,
+      email: 'lizunong@gmail.com',
+      marketingConsent: '1',
+      passthrough: localStorage.getItem('authToken'),
+    })
+    console.log(Paddle)
+  }
+
   return (
-    <a href="https://lzl.dev/">
-      <div className="text-6xl font-bold">LZL</div>
-    </a>
+    <div className="text-6xl font-bold" onClick={checkout}>
+      LZL
+    </div>
   )
 }

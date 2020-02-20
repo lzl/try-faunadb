@@ -239,3 +239,22 @@ const result = await client.query(
   })
 )
 ```
+
+Get key from secret
+
+```js
+const result = await client.query(
+  q.KeyFromSecret('fnEDk0BxpOACCQOS4SgIoAIB-2OcLW5QS4vxxIHXlH-Ntr7fdbs')
+)
+```
+
+Query transactions
+
+```js
+const result = await client.query(
+  q.Map(
+    q.Paginate(q.Documents(q.Collection('transactions')), { size: 3 }),
+    q.Lambda('x', q.Get(q.Var('x')))
+  )
+)
+```

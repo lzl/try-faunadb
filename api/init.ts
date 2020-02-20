@@ -25,7 +25,9 @@ export default async (req: NowRequest, res: NowResponse) => {
 
     // const data = JSON.parse(req.body)
 
+    // const result = await client.query()
     // res.status(200).json(result)
+
     res.status(200).json({ ok: true })
   } catch (err) {
     console.log(err)
